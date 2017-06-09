@@ -44,4 +44,18 @@ public class OrganicDogTest {
 		// assert
 		Assert.assertEquals(0, thirstReturn);		
 	}
+	
+	@Test
+	public void shouldReturnWoofRover() {
+		OrganicDog underTest = new OrganicDog("Rover", 20, 20);
+		String response = underTest.woof();
+		Assert.assertEquals("woof!! I am Rover", response);
+	}
+	
+	@Test
+	public void shouldReturnRoverOrganicDog() {
+		OrganicDog underTest = new OrganicDog("Rover", 20, 20);
+		String response = underTest.toString();
+		Assert.assertEquals("Rover OrganicDog", response);
+	}
 }

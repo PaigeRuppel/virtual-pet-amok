@@ -45,4 +45,11 @@ public class RoboCatTest {
 		String response = underTest.meow();
 		Assert.assertEquals("meow!! I am Kit", response);
 	}
+	
+	@Test
+	public void shouldReturnKitandRoboCat() {
+		RoboCat underTest = new RoboCat("Kit", 20, 20);
+		String response = underTest.toString();
+		Assert.assertEquals("Kit RoboCat", response);
+	}
 }
