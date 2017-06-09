@@ -5,7 +5,7 @@ public class OrganicDog implements OrganicPet {
 	private String name;
 	private int hunger;
 	private int thirst;
-	
+
 	public OrganicDog(String name, int hunger, int thirst) {
 		this.name = name;
 		this.hunger = hunger;
@@ -15,8 +15,19 @@ public class OrganicDog implements OrganicPet {
 	@Override
 	public int feed() {
 		hunger -= 10;
-		
+		if (hunger < 0) {
+			hunger = 0;
+		}
 		return hunger;
 	}
-	
+
+	@Override
+	public int water() {
+		thirst -= 10;
+		if (thirst < 0) {
+			thirst = 0;
+		}
+		return thirst;
+	}
+
 }
