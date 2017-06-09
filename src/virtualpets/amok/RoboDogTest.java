@@ -6,22 +6,12 @@ import org.junit.Test;
 public class RoboDogTest {
 
 	@Test
-	public void shouldReturnOilLevel1() {
+	public void shouldReturnOilLevel10() {
 		// arrange
-		RoboDog underTest = new RoboDog();
+		RoboDog underTest = new RoboDog("Bill", 20, 20);
 		// act
-		int oilLevel = underTest.getOilLevel();
+		int newOilLevel = underTest.applyOil();
 		// assert
-		Assert.assertEquals(1, oilLevel);
-	}
-	
-	@Test 
-	public void shouldReturnOilLevel() {
-		//arrange
-		RoboDog underTest = new RoboDog();
-		//act
-		int oilLevel = underTest.getOilLevel();
-		//assert
-		Assert.assertEquals(oilLevel, oilLevel);
+		Assert.assertEquals(10, newOilLevel);
 	}
 }
