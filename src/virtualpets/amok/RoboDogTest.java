@@ -24,18 +24,48 @@ public class RoboDogTest {
 		// assert
 		Assert.assertEquals(10, newMaintenanceLevel);
 	}
-	
+
 	@Test
 	public void shouldReturnOilLevel0() {
 		RoboDog underTest = new RoboDog("Bill", 5, 5);
 		int newMaintenanceLevel = underTest.maintain();
-		Assert.assertEquals(0,  newMaintenanceLevel);
+		Assert.assertEquals(0, newMaintenanceLevel);
 	}
-	
+
 	@Test
 	public void shouldReturnMaintenanceLevel0() {
 		RoboDog underTest = new RoboDog("Bill", 5, 5);
 		int newOilLevel = underTest.applyOil();
 		Assert.assertEquals(0, newOilLevel);
+	}
+
+	@Test
+	public void shouldReturnOilLevel20FromTick() {
+		RoboDog underTest = new RoboDog("Bill", 15, 15);
+		underTest.tick();
+		int oilNeedAfterTick = underTest.getOilNeed();
+		Assert.assertEquals(20, oilNeedAfterTick);
+	}
+	
+	@Test
+	public void shouldReturnMaintenanceLevel20FromTick() {
+		RoboDog underTest = new RoboDog("Bill", 15, 15);
+		underTest.tick();
+		int maintenanceNeedAfterTick = underTest.getMaintenanceNeed();
+		Assert.assertEquals(20, maintenanceNeedAfterTick);
+	}
+	
+	@Test
+	public void shouldReturnOilNeed20AfterWalk() {
+		RoboDog underTest = new RoboDog("Bill", 25, 25);
+		int oilNeedAfterWalk = underTest.walk();
+		Assert.assertEquals(20, oilNeedAfterWalk);
+	}
+	
+	@Test
+	public void shouldReturnOilNeed0AfterWalk() {
+		RoboDog underTest = new RoboDog("Bill", 0, 0);
+		int oilNeedAfterWalk= underTest.walk();
+		Assert.assertEquals(0, oilNeedAfterWalk);
 	}
 }

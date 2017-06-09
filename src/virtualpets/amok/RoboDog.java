@@ -2,7 +2,6 @@ package virtualpets.amok;
 
 public class RoboDog extends Dog implements RoboticPet {
 
-	
 	private int oilNeed;
 	private int maintenanceNeed;
 
@@ -25,6 +24,29 @@ public class RoboDog extends Dog implements RoboticPet {
 	@Override
 	public int applyOil() {
 		oilNeed -= 10;
+		if (oilNeed < 0) {
+			oilNeed = 0;
+		}
+		return oilNeed;
+	}
+
+	@Override
+	public void tick() {
+		oilNeed += 5;
+		maintenanceNeed += 5;
+	}
+
+	public int getOilNeed() {
+		return oilNeed;
+	}
+
+	public int getMaintenanceNeed() {
+		return maintenanceNeed;
+	}
+
+	@Override
+	public int walk() {
+		oilNeed -= 5;
 		if (oilNeed < 0) {
 			oilNeed = 0;
 		}

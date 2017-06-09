@@ -1,8 +1,5 @@
 package virtualpets.amok;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 public class RoboCat extends Cat implements RoboticPet {
 
 	
@@ -31,5 +28,11 @@ public class RoboCat extends Cat implements RoboticPet {
 			oilNeed = 0;
 		}
 		return oilNeed;
+	}
+	
+	@Override
+	public void tick() {
+		oilNeed += 5;
+		maintenanceNeed += 5;
 	}
 }

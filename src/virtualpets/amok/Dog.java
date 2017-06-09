@@ -9,4 +9,6 @@ public abstract class Dog extends VirtualPet {
 	public String woof() {
 		return "woof!! I am " + getName();
 	}
+	
+	public abstract int walk();
 }

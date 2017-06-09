@@ -44,4 +44,26 @@ public class OrganicCatTest {
 		// assert
 		Assert.assertEquals(0, thirstReturn);		
 	}
+	
+	@Test
+	public void shouldReturnHunger20FromTick() {
+		// arrange
+		OrganicCat underTest = new OrganicCat("Simba", 15, 15);
+		// act
+		underTest.tick();
+		int hungerReturn = underTest.getHunger();
+		// assert
+		Assert.assertEquals(20, hungerReturn);		
+	}
+	
+	@Test
+	public void shouldReturnThirst20FromTick() {
+		// arrange
+		OrganicCat underTest = new OrganicCat("Simba", 15, 15);
+		// act
+		underTest.tick();
+		int thirstReturn = underTest.getThirst();
+		// assert
+		Assert.assertEquals(20, thirstReturn);		
+	}
 }

@@ -1,15 +1,16 @@
 package virtualpets.amok;
 
-public class OrganicCat extends Cat  implements OrganicPet {
+public class OrganicCat extends Cat implements OrganicPet {
 
-	
 	private int hunger;
 	private int thirst;
+	private int wasteLevel;
 
 	public OrganicCat(String name, int hunger, int thirst) {
 		super(name);
 		this.hunger = hunger;
 		this.thirst = thirst;
+		wasteLevel = 10;
 	}
 
 	@Override
@@ -27,6 +28,21 @@ public class OrganicCat extends Cat  implements OrganicPet {
 		if (thirst < 0) {
 			thirst = 0;
 		}
+		return thirst;
+	}
+
+	@Override
+	public void tick() {
+		hunger += 5;
+		thirst += 5;
+		wasteLevel += 5;
+	}
+
+	public int getHunger() {
+		return hunger;
+	}
+
+	public int getThirst() {
 		return thirst;
 	}
 

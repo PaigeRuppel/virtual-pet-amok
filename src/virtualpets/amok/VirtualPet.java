@@ -1,6 +1,6 @@
 package virtualpets.amok;
 
-public class VirtualPet {
+public abstract class VirtualPet {
 
 	private String name;
 
@@ -8,6 +8,7 @@ public class VirtualPet {
 		this.name = name;
 	}
 
+	@Override
 	public String toString() {
 		return getName() + " " + getClass().getSimpleName();
 	}
@@ -15,5 +16,7 @@ public class VirtualPet {
 	public String getName() {
 		return name;
 	}
+	
+	public abstract void tick();
 
 }

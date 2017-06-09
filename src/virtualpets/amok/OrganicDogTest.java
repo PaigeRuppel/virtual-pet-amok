@@ -58,4 +58,18 @@ public class OrganicDogTest {
 		String response = underTest.toString();
 		Assert.assertEquals("Rover OrganicDog", response);
 	}
+	
+	@Test
+	public void shouldReturnBoredom10AfterWalk() {
+		OrganicDog underTest = new OrganicDog("Rover", 20, 20);
+		int boredomAfterWalk = underTest.walk();
+		Assert.assertEquals(10, boredomAfterWalk);
+	}
+	
+	@Test
+	public void shouldReturnBoredom0AfterWalk() {
+		OrganicDog underTest = new OrganicDog("Rover", 20, 20, 10, 0);
+		int boredomAfterWalk = underTest.walk();
+		Assert.assertEquals(0, boredomAfterWalk);
+	}
 }
