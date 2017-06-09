@@ -24,4 +24,18 @@ public class RoboDogTest {
 		// assert
 		Assert.assertEquals(10, newMaintenanceLevel);
 	}
+	
+	@Test
+	public void shouldReturnOilLevel0() {
+		RoboDog underTest = new RoboDog("Bill", 5, 5);
+		int newMaintenanceLevel = underTest.maintain();
+		Assert.assertEquals(0,  newMaintenanceLevel);
+	}
+	
+	@Test
+	public void shouldReturnMaintenanceLevel0() {
+		RoboDog underTest = new RoboDog("Bill", 5, 5);
+		int newOilLevel = underTest.applyOil();
+		Assert.assertEquals(0, newOilLevel);
+	}
 }
