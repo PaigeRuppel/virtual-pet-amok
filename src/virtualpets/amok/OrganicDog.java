@@ -1,13 +1,13 @@
 package virtualpets.amok;
 
-public class OrganicDog implements OrganicPet {
+public class OrganicDog extends Dog implements OrganicPet {
 
 	private String name;
 	private int hunger;
 	private int thirst;
 
 	public OrganicDog(String name, int hunger, int thirst) {
-		this.name = name;
+		super(name);
 		this.hunger = hunger;
 		this.thirst = thirst;
 	}

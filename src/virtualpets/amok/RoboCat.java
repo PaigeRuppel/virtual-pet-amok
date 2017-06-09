@@ -3,14 +3,14 @@ package virtualpets.amok;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class RoboCat implements RoboticPet {
+public class RoboCat extends Cat implements RoboticPet {
 
-	private String name;
+	
 	private int oilNeed;
 	private int maintenanceNeed;
 
 	public RoboCat(String name, int oilNeed, int maintenanceNeed) {
-		this.name = name;
+		super(name);
 		this.oilNeed = oilNeed;
 		this.maintenanceNeed = maintenanceNeed;
 	}

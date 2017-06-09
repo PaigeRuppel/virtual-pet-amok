@@ -1,13 +1,13 @@
 package virtualpets.amok;
 
-public class RoboDog implements RoboticPet {
+public class RoboDog extends Dog implements RoboticPet {
 
-	private String name;
+	
 	private int oilNeed;
 	private int maintenanceNeed;
 
 	public RoboDog(String name, int oilNeed, int maintenanceNeed) {
-		this.name = name;
+		super(name);
 		this.oilNeed = oilNeed;
 		this.maintenanceNeed = maintenanceNeed;
 	}
