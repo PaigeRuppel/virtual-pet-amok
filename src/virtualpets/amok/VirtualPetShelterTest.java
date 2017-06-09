@@ -34,5 +34,31 @@ public class VirtualPetShelterTest {
 		+ "\nAll organic pets []"
 		+ "\nAll robotic pets [fido=Fido RoboDog]", response);	
 	}
+	
+	@Test
+	public void shouldReturnKitInAllPetsAllCatsAllRobotic() {
+		VirtualPet underTest = new RoboCat("Kit", 10, 10);
+		VirtualPetShelter testShelter = new VirtualPetShelter();
+		testShelter.intake(underTest);
+		String response = testShelter.getMaps();
+		Assert.assertEquals( "All pets [kit=Kit RoboCat]"
+		+ "\nAll cats [kit=Kit RoboCat]"
+		+ "\nAll dogs []"
+		+ "\nAll organic pets []"
+		+ "\nAll robotic pets [kit=Kit RoboCat]", response);	
+	}
+	
+	@Test
+	public void shouldReturnSnoopyInAllPetsAllDogsAllOrganic() {
+		VirtualPet underTest = new OrganicDog("Snoopy", 10, 10);
+		VirtualPetShelter testShelter = new VirtualPetShelter();
+		testShelter.intake(underTest);
+		String response = testShelter.getMaps();
+		Assert.assertEquals( "All pets [snoopy=Snoopy OrganicDog]"
+		+ "\nAll cats []"
+		+ "\nAll dogs [snoopy=Snoopy OrganicDog]"
+		+ "\nAll organic pets [snoopy=Snoopy OrganicDog]"
+		+ "\nAll robotic pets []", response);	
+	}
 
 }
