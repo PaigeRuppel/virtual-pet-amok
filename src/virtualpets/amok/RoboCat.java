@@ -9,6 +9,12 @@ public class RoboCat extends Cat implements RoboticPet {
 		super(name);
 		this.oilNeed = oilNeed;
 		this.maintenanceNeed = maintenanceNeed;
+		setHealthNeed();
+	}
+	
+	@Override
+	public int setHealthNeed() {
+		return ((oilNeed + maintenanceNeed) / 2);
 	}
 
 	@Override
@@ -17,6 +23,7 @@ public class RoboCat extends Cat implements RoboticPet {
 		if (maintenanceNeed < 0) {
 			maintenanceNeed = 0;
 		}
+		setHealthNeed();
 		return maintenanceNeed;
 	}
 
@@ -26,6 +33,7 @@ public class RoboCat extends Cat implements RoboticPet {
 		if (oilNeed < 0) {
 			oilNeed = 0;
 		}
+		setHealthNeed();
 		return oilNeed;
 	}
 
@@ -33,10 +41,11 @@ public class RoboCat extends Cat implements RoboticPet {
 	public void tick() {
 		oilNeed += 5;
 		maintenanceNeed += 5;
+		setHealthNeed();
 	}
 
 	@Override
-	public String indPetStats() {
+	public String detailedPetStats() {
 		return getName() + "\t\t | \t " + oilNeed + "\t\t\t | \t " + maintenanceNeed + "\t\t | \t ";
 	}
 }

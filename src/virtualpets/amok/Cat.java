@@ -9,4 +9,6 @@ public abstract class Cat extends VirtualPet {
 	public String meow() {
 		return "meow!! I am " + getName();
 	}
+
+	public abstract int setHealthNeed();
 }

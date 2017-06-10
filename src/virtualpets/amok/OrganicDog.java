@@ -13,14 +13,21 @@ public class OrganicDog extends Dog implements OrganicPet {
 		this.thirst = thirst;
 		cageWasteLevel = 10;
 		boredom = 30;
+		setHealthNeed();
 	}
-
+	
 	public OrganicDog(String name, int hunger, int thirst, int wasteLevel, int boredom) {
 		super(name);
 		this.hunger = hunger;
 		this.thirst = thirst;
 		this.cageWasteLevel = wasteLevel;
 		this.boredom = boredom;
+		setHealthNeed();
+	}
+
+	@Override
+	public int setHealthNeed() {
+		return ((hunger + thirst + cageWasteLevel + boredom) / 4);
 	}
 
 	@Override
@@ -29,6 +36,7 @@ public class OrganicDog extends Dog implements OrganicPet {
 		if (hunger < 0) {
 			hunger = 0;
 		}
+		setHealthNeed();
 		return hunger;
 	}
 
@@ -42,6 +50,7 @@ public class OrganicDog extends Dog implements OrganicPet {
 		if (thirst < 0) {
 			thirst = 0;
 		}
+		setHealthNeed();
 		return thirst;
 	}
 
@@ -51,6 +60,7 @@ public class OrganicDog extends Dog implements OrganicPet {
 		thirst += 5;
 		cageWasteLevel += 5;
 		boredom += 5;
+		setHealthNeed();
 	}
 
 	@Override
@@ -59,6 +69,7 @@ public class OrganicDog extends Dog implements OrganicPet {
 		if (boredom < 0) {
 			boredom = 0;
 		}
+		setHealthNeed();
 		return boredom;
 	}
 
@@ -71,6 +82,7 @@ public class OrganicDog extends Dog implements OrganicPet {
 	}
 
 	public int cleanCage() {
+		setHealthNeed();
 		return cageWasteLevel = 0;
 	}
 
@@ -79,8 +91,10 @@ public class OrganicDog extends Dog implements OrganicPet {
 	}
 
 	@Override
-	public String indPetStats() {
+	public String detailedPetStats() {
 		return getName() + "\t\t | \t " + hunger + "\t\t\t | \t " + thirst + "\t\t | \t " + boredom;
 	}
+	
+
 
 }

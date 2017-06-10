@@ -3,7 +3,7 @@ package virtualpets.amok;
 public abstract class VirtualPet {
 
 	private String name;
-	protected int healthNeed;
+	private int healthNeed;
 	// scale of 0 - 100, with 100 being in desperate need/probably dead
 
 	public VirtualPet(String name) {
@@ -20,16 +20,19 @@ public abstract class VirtualPet {
 		return name;
 	}
 
-	public int getHealthNeed() {
-		return healthNeed;
-	}
-
 	public void setHealthNeed(int healthNeed) {
 		this.healthNeed = healthNeed;
 	}
 
-	public abstract void tick();
-	
-	public abstract String indPetStats();
+	public int getHealthNeed() {
+		return healthNeed;
+	}
 
+	public abstract void tick();
+
+	public abstract String detailedPetStats();
+
+	public String generalPetHealthOnlyStats() {
+		return getName() + "\t\t | \t " + getHealthNeed();
+	}
 }

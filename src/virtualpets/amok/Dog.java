@@ -10,11 +10,7 @@ public abstract class Dog extends VirtualPet {
 		return "woof!! I am " + getName();
 	}
 
-	public int walk() {
-		healthNeed -= 15;
-		if (healthNeed < 0) {
-			healthNeed = 0;
-		}
-		return healthNeed;
-	}
+	public abstract int walk();
+
+	public abstract int setHealthNeed();
 }
