@@ -6,4 +6,6 @@ public interface RoboticPet {
 	
 	public int applyOil();
 
+	public String detailedPetStats();
+
 }

@@ -9,32 +9,35 @@ public class RoboDog extends Dog implements RoboticPet {
 		super(name);
 		this.oilNeed = oilNeed;
 		this.maintenanceNeed = maintenanceNeed;
-		setHealthNeed();
-	}
-	
-	@Override
-	public int setHealthNeed() {
-		return ((oilNeed + maintenanceNeed) / 2);
+		setHealth();
 	}
 
 	@Override
+	public int setHealth() {
+		health = (100 - (oilNeed + maintenanceNeed) / 2);
+		return health;
+	}
+
+
+
+	@Override
 	public int maintain() {
-		maintenanceNeed -= 10;
+		maintenanceNeed -= 20;
 		if (maintenanceNeed < 0) {
 			maintenanceNeed = 0;
 		}
-		setHealthNeed();
+		setHealth();
 		return maintenanceNeed;
 
 	}
 
 	@Override
 	public int applyOil() {
-		oilNeed -= 10;
+		oilNeed -= 20;
 		if (oilNeed < 0) {
 			oilNeed = 0;
 		}
-		setHealthNeed();
+		setHealth();
 		return oilNeed;
 	}
 
@@ -42,7 +45,7 @@ public class RoboDog extends Dog implements RoboticPet {
 	public void tick() {
 		oilNeed += 5;
 		maintenanceNeed += 5;
-		setHealthNeed();
+		setHealth();
 	}
 
 	public int getOilNeed() {
@@ -59,13 +62,13 @@ public class RoboDog extends Dog implements RoboticPet {
 		if (oilNeed < 0) {
 			oilNeed = 0;
 		}
-		setHealthNeed();
+		setHealth();
 		return oilNeed;
 	}
 
 	@Override
 	public String detailedPetStats() {
-		return getName() + "\t\t | \t " + oilNeed + "\t\t\t | \t " + maintenanceNeed + "\t\t | \t ";
+		return getName() + "\t\t\t | \t " + oilNeed + "\t\t\t\t | \t " + maintenanceNeed;
 	}
 
 }

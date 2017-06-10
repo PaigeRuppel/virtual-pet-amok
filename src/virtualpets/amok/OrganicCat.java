@@ -5,37 +5,40 @@ public class OrganicCat extends Cat implements OrganicPet {
 	private int hunger;
 	private int thirst;
 	private int litterboxWaste;
+	private int boredom;
 
 	public OrganicCat(String name, int hunger, int thirst) {
 		super(name);
 		this.hunger = hunger;
 		this.thirst = thirst;
-		litterboxWaste = 10;
-		setHealthNeed();
+		litterboxWaste = 0;
+		boredom = 10;
+		setHealth();
 	}
 
 	@Override
-	public int setHealthNeed() {
-		return ((hunger + thirst + litterboxWaste) / 3);
+	public int setHealth() {
+		health = (100 - (hunger + thirst + litterboxWaste + boredom) / 4);
+		return health;
 	}
 
 	@Override
 	public int feed() {
-		hunger -= 10;
-		if (hunger < 10) {
-			hunger = 10;
+		hunger -= 15;
+		if (hunger < 0) {
+			hunger = 0;
 		}
-		setHealthNeed();
+		setHealth();
 		return hunger;
 	}
 
 	@Override
 	public int water() {
-		thirst -= 10;
+		thirst -= 15;
 		if (thirst < 0) {
 			thirst = 0;
 		}
-		setHealthNeed();
+		setHealth();
 		return thirst;
 	}
 
@@ -44,12 +47,23 @@ public class OrganicCat extends Cat implements OrganicPet {
 		hunger += 5;
 		thirst += 5;
 		litterboxWaste += 5;
-		setHealthNeed();
+		boredom += 5;
+		setHealth();
 	}
 
 	public int cleanLitterBox() {
-		setHealthNeed();
+		setHealth();
 		return litterboxWaste = 0;
+	}
+	
+	@Override
+	public int play() {
+		boredom -= 10;
+		if (boredom < 0) {
+			boredom = 0;
+		}
+		setHealth();
+		return boredom;
 	}
 
 	public int getLitterboxWaste() {
@@ -66,7 +80,8 @@ public class OrganicCat extends Cat implements OrganicPet {
 
 	@Override
 	public String detailedPetStats() {
-		return getName() + "\t\t | \t " + hunger + "\t\t\t | \t " + thirst + "\t\t | \t " + litterboxWaste;
+		return getName() + "\t\t\t | \t " + hunger + "\t\t\t | \t " + thirst + "\t\t\t | \t " + boredom + "\t\t\t | \t "
+				+ litterboxWaste;
 	}
 
 }

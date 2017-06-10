@@ -12,5 +12,5 @@ public abstract class Dog extends VirtualPet {
 
 	public abstract int walk();
 
-	public abstract int setHealthNeed();
+	public abstract int setHealth();
 }

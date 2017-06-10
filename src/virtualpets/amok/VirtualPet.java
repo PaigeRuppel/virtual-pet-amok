@@ -3,12 +3,12 @@ package virtualpets.amok;
 public abstract class VirtualPet {
 
 	private String name;
-	private int healthNeed;
+	protected int health;
 	// scale of 0 - 100, with 100 being in desperate need/probably dead
 
 	public VirtualPet(String name) {
 		this.name = name;
-		healthNeed = 0;
+		health = 0;
 	}
 
 	@Override
@@ -20,19 +20,17 @@ public abstract class VirtualPet {
 		return name;
 	}
 
-	public void setHealthNeed(int healthNeed) {
-		this.healthNeed = healthNeed;
+	public int getHealth() {
+		return health;
 	}
 
-	public int getHealthNeed() {
-		return healthNeed;
-	}
+	public abstract int setHealth();
 
 	public abstract void tick();
 
-	public abstract String detailedPetStats();
+//	public abstract String detailedPetStats();
 
 	public String generalPetHealthOnlyStats() {
-		return getName() + "\t\t | \t " + getHealthNeed();
+		return getName() + "\t\t\t | \t " + this.getClass().getSimpleName() + "\t\t | \t " + getHealth();
 	}
 }

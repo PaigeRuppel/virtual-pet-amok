@@ -8,7 +8,7 @@ public class OrganicCatTest {
 	@Test
 	public void shouldReturnHunger10() {
 		// arrange
-		OrganicCat underTest = new OrganicCat("Simba", 20, 20);
+		OrganicCat underTest = new OrganicCat("Simba", 25, 25);
 		// act
 		int hungerReturn = underTest.feed();
 		// assert
@@ -22,13 +22,13 @@ public class OrganicCatTest {
 		// act
 		int hungerReturn = underTest.feed();
 		// assert
-		Assert.assertEquals(10, hungerReturn);		
+		Assert.assertEquals(0, hungerReturn);		
 	}
 	
 	@Test
 	public void shouldReturnThirst10() {
 		// arrange
-		OrganicCat underTest = new OrganicCat("Simba", 20, 20);
+		OrganicCat underTest = new OrganicCat("Simba", 25, 25);
 		// act
 		int thirstReturn = underTest.water();
 		// assert

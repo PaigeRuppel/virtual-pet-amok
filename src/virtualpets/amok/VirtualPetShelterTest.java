@@ -149,7 +149,7 @@ public class VirtualPetShelterTest {
 		VirtualPet underTest = new OrganicCat("Simba", 20, 20);
 		VirtualPetShelter testShelter = new VirtualPetShelter();
 		testShelter.intake(underTest);
-		testShelter.cleanLitterBoxes();
+		testShelter.cleanLitterBox();
 		int litterboxAfterClean = ((OrganicCat) underTest).getLitterboxWaste();
 		Assert.assertEquals(0, litterboxAfterClean);
 	}

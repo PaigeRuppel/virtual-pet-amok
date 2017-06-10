@@ -8,7 +8,7 @@ public class OrganicDogTest {
 	@Test
 	public void shouldReturnHunger10() {
 		// arrange
-		OrganicDog underTest = new OrganicDog("Rover", 20, 20);
+		OrganicDog underTest = new OrganicDog("Rover", 25, 25);
 		// act
 		int hungerReturn = underTest.feed();
 		// assert
@@ -28,7 +28,7 @@ public class OrganicDogTest {
 	@Test
 	public void shouldReturnThirst10() {
 		// arrange
-		OrganicDog underTest = new OrganicDog("Rover", 20, 20);
+		OrganicDog underTest = new OrganicDog("Rover", 25, 25);
 		// act
 		int thirstReturn = underTest.water();
 		// assert
@@ -74,16 +74,9 @@ public class OrganicDogTest {
 	}
 
 	@Test
-	public void shouldReturnHealthNeed0() {
-		OrganicDog underTest = new OrganicDog("Rover", 20, 20, 10, 0);
-		int healthNeedDefault = underTest.getHealthNeed();
-		Assert.assertEquals(0, healthNeedDefault);
-	}
-
-	@Test
-	public void shouldReturnHealthNeed10() {
-		OrganicDog underTest = new OrganicDog("Rover", 20, 20, 10, 0);
-		int healthNeedDefault = underTest.getHealthNeed();
-		Assert.assertEquals(0, healthNeedDefault);
+	public void shouldReturnHealthNeed88() {
+		OrganicDog underTest = new OrganicDog("Rover", 20, 20, 20, 0);
+		int healthNeed = underTest.getHealth();
+		Assert.assertEquals(85, healthNeed);
 	}
 }

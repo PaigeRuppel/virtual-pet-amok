@@ -8,7 +8,7 @@ public class RoboDogTest {
 	@Test
 	public void shouldReturnOilLevel10() {
 		// arrange
-		RoboDog underTest = new RoboDog("Bill", 20, 20);
+		RoboDog underTest = new RoboDog("Bill", 30, 30);
 		// act
 		int newOilLevel = underTest.applyOil();
 		// assert
@@ -18,7 +18,7 @@ public class RoboDogTest {
 	@Test
 	public void shouldReturnMaintenanceLevel10() {
 		// arrange
-		RoboDog underTest = new RoboDog("Bill", 20, 20);
+		RoboDog underTest = new RoboDog("Bill", 30, 30);
 		// act
 		int newMaintenanceLevel = underTest.maintain();
 		// assert

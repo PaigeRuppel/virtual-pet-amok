@@ -13,30 +13,31 @@ public class OrganicDog extends Dog implements OrganicPet {
 		this.thirst = thirst;
 		cageWasteLevel = 10;
 		boredom = 30;
-		setHealthNeed();
+		setHealth();
 	}
-	
+
 	public OrganicDog(String name, int hunger, int thirst, int wasteLevel, int boredom) {
 		super(name);
 		this.hunger = hunger;
 		this.thirst = thirst;
 		this.cageWasteLevel = wasteLevel;
 		this.boredom = boredom;
-		setHealthNeed();
+		setHealth();
 	}
 
 	@Override
-	public int setHealthNeed() {
-		return ((hunger + thirst + cageWasteLevel + boredom) / 4);
+	public int setHealth() {
+		health = (100 - ((hunger + thirst + cageWasteLevel + boredom) / 4));
+		return health;
 	}
 
 	@Override
 	public int feed() {
-		hunger -= 10;
+		hunger -= 15;
 		if (hunger < 0) {
 			hunger = 0;
 		}
-		setHealthNeed();
+		setHealth();
 		return hunger;
 	}
 
@@ -46,11 +47,11 @@ public class OrganicDog extends Dog implements OrganicPet {
 
 	@Override
 	public int water() {
-		thirst -= 10;
+		thirst -= 15;
 		if (thirst < 0) {
 			thirst = 0;
 		}
-		setHealthNeed();
+		setHealth();
 		return thirst;
 	}
 
@@ -60,7 +61,7 @@ public class OrganicDog extends Dog implements OrganicPet {
 		thirst += 5;
 		cageWasteLevel += 5;
 		boredom += 5;
-		setHealthNeed();
+		setHealth();
 	}
 
 	@Override
@@ -69,7 +70,17 @@ public class OrganicDog extends Dog implements OrganicPet {
 		if (boredom < 0) {
 			boredom = 0;
 		}
-		setHealthNeed();
+		setHealth();
+		return boredom;
+	}
+	
+	@Override
+	public int play() {
+		boredom -= 10;
+		if (boredom < 0) {
+			boredom = 0;
+		}
+		setHealth();
 		return boredom;
 	}
 
@@ -82,7 +93,7 @@ public class OrganicDog extends Dog implements OrganicPet {
 	}
 
 	public int cleanCage() {
-		setHealthNeed();
+		setHealth();
 		return cageWasteLevel = 0;
 	}
 
@@ -92,9 +103,8 @@ public class OrganicDog extends Dog implements OrganicPet {
 
 	@Override
 	public String detailedPetStats() {
-		return getName() + "\t\t | \t " + hunger + "\t\t\t | \t " + thirst + "\t\t | \t " + boredom;
+		return getName() + "\t\t\t | \t " + hunger + "\t\t\t | \t " + thirst + "\t\t\t | \t " + boredom + "\t\t\t | \t "
+				+ cageWasteLevel;
 	}
-	
-
 
 }
