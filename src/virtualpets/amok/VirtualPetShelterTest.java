@@ -60,5 +60,45 @@ public class VirtualPetShelterTest {
 		+ "\nAll organic pets [snoopy=Snoopy OrganicDog]"
 		+ "\nAll robotic pets []", response);	
 	}
+	
+	@Test
+	public void shouldReturnOrganicDogWithBoredom10AfterWalk() {
+		VirtualPet underTest = new OrganicDog("Snoopy", 10, 10);
+		VirtualPetShelter testShelter = new VirtualPetShelter();
+		testShelter.intake(underTest);
+		testShelter.walkDogs();
+		int boredomAfterWalk = ((OrganicDog) underTest).getBoredom();
+		Assert.assertEquals( 10, boredomAfterWalk);	
+	}
+	
+	@Test
+	public void shouldReturnRoboDogWithOil10AfterWalk() {
+		VirtualPet underTest = new RoboDog("Fido", 15, 15);
+		VirtualPetShelter testShelter = new VirtualPetShelter();
+		testShelter.intake(underTest);
+		testShelter.walkDogs();
+		int oilNeedAfterWalk = ((RoboDog) underTest).getOilNeed();
+		Assert.assertEquals( 10, oilNeedAfterWalk);	
+	} 
+	
+	@Test
+	public void shouldReturnOrgDogWithHunger10AfterFeed() {
+		VirtualPet underTest = new OrganicDog("Snoopy", 20, 20);
+		VirtualPetShelter testShelter = new VirtualPetShelter();
+		testShelter.intake(underTest);
+		testShelter.feedOrganicPets();
+		int hungerAfterFeed = ((OrganicDog) underTest).getHunger();
+		Assert.assertEquals( 10, hungerAfterFeed);	
+	} 
+	
+	@Test
+	public void shouldReturnOrgCatWithHunger10AfterFeed() {
+		VirtualPet underTest = new OrganicCat("Simba", 20, 20);
+		VirtualPetShelter testShelter = new VirtualPetShelter();
+		testShelter.intake(underTest);
+		testShelter.feedOrganicPets();
+		int hungerAfterFeed = ((OrganicCat) underTest).getHunger();
+		Assert.assertEquals( 10, hungerAfterFeed);	
+	} 
 
 }

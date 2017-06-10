@@ -22,6 +22,7 @@ public class OrganicDog extends Dog implements OrganicPet {
 		this.wasteLevel = wasteLevel;
 		this.boredom = boredom;
 	}
+	
 
 	@Override
 	public int feed() {
@@ -29,6 +30,10 @@ public class OrganicDog extends Dog implements OrganicPet {
 		if (hunger < 0) {
 			hunger = 0;
 		}
+		return hunger;
+	}
+	
+	public int getHunger() {
 		return hunger;
 	}
 
@@ -56,7 +61,10 @@ public class OrganicDog extends Dog implements OrganicPet {
 			boredom = 0;
 		}
 		return boredom;
-
+	}
+	
+	public int getBoredom() {
+		return boredom;
 	}
 
 }

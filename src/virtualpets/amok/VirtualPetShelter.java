@@ -5,14 +5,15 @@ import java.util.Map;
 
 public class VirtualPetShelter {
 
+	// show roster of all pets
 	Map<String, VirtualPet> allPets = new HashMap<>();
-
-	Map<String, Dog> allDogs = new HashMap<>(); // walk all dogs
-
-	Map<String, Cat> allCats = new HashMap<>(); // play all cats
-
+	// walk all dogs
+	Map<String, Dog> allDogs = new HashMap<>();
+	// play all cats
+	Map<String, Cat> allCats = new HashMap<>();
+	// feed/water all organic pets
 	Map<String, OrganicPet> allOrganicPets = new HashMap<>();
-
+	// oil/maintain all robotic pets
 	Map<String, RoboticPet> allRoboticPets = new HashMap<>();
 
 	public void intake(VirtualPet pet) {
@@ -45,6 +46,18 @@ public class VirtualPetShelter {
 				+ allDogs.entrySet() + "\nAll organic pets " + allOrganicPets.entrySet() + "\nAll robotic pets "
 				+ allRoboticPets.entrySet();
 		return message;
+	}
+
+	public void walkDogs() {
+		for (Dog current : allDogs.values()) {
+			current.walk();
+		}
+	}
+
+	public void feedOrganicPets() {
+		for (OrganicPet current : allOrganicPets.values()) {
+			current.feed();
+		}
 	}
 
 }
