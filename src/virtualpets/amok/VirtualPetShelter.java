@@ -60,4 +60,24 @@ public class VirtualPetShelter {
 		}
 	}
 
+	public void waterOrganicPets() {
+		for (OrganicPet current : allOrganicPets.values()) {
+			current.water();
+		}
+	}
+
+	public void oilRoboticPets() {
+		for (RoboticPet current : allRoboticPets.values()) {
+			current.applyOil();
+		}
+	}
+
+	public void maintainRoboticPets() {
+		for (RoboticPet current : allRoboticPets.values()) {
+			current.maintain();
+		}
+	}
+	
+	
+
 }
