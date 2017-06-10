@@ -4,13 +4,13 @@ public class OrganicCat extends Cat implements OrganicPet {
 
 	private int hunger;
 	private int thirst;
-	private int wasteLevel;
+	private int litterboxWaste;
 
 	public OrganicCat(String name, int hunger, int thirst) {
 		super(name);
 		this.hunger = hunger;
 		this.thirst = thirst;
-		wasteLevel = 10;
+		litterboxWaste = 10;
 	}
 
 	@Override
@@ -35,7 +35,15 @@ public class OrganicCat extends Cat implements OrganicPet {
 	public void tick() {
 		hunger += 5;
 		thirst += 5;
-		wasteLevel += 5;
+		litterboxWaste += 5;
+	}
+
+	public int cleanLitterBox() {
+		return litterboxWaste = 0;
+	}
+
+	public int getLitterboxWaste() {
+		return litterboxWaste;
 	}
 
 	public int getHunger() {
@@ -44,6 +52,11 @@ public class OrganicCat extends Cat implements OrganicPet {
 
 	public int getThirst() {
 		return thirst;
+	}
+
+	@Override
+	public String indPetStats() {
+		return getName() + "\t\t | \t " + hunger + "\t\t\t | \t " + thirst + "\t\t | \t " + litterboxWaste;
 	}
 
 }

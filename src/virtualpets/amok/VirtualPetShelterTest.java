@@ -15,7 +15,8 @@ public class VirtualPetShelterTest {
 		String response = testShelter.getMaps();
 		// assert
 		Assert.assertEquals("All pets [simba=Simba OrganicCat]" + "\nAll cats [simba=Simba OrganicCat]"
-				+ "\nAll dogs []" + "\nAll organic pets [simba=Simba OrganicCat]" + "\nAll robotic pets []", response);
+				+ "\nAll dogs []" + "\nAll organic pets [simba=Simba OrganicCat]" + "\nAll robotic pets []"
+				+ "\nAll organic cats [simba=Simba OrganicCat]" + "\nAll organic dogs []", response);
 	}
 
 	@Test
@@ -25,7 +26,8 @@ public class VirtualPetShelterTest {
 		testShelter.intake(underTest);
 		String response = testShelter.getMaps();
 		Assert.assertEquals("All pets [fido=Fido RoboDog]" + "\nAll cats []" + "\nAll dogs [fido=Fido RoboDog]"
-				+ "\nAll organic pets []" + "\nAll robotic pets [fido=Fido RoboDog]", response);
+				+ "\nAll organic pets []" + "\nAll robotic pets [fido=Fido RoboDog]" + "\nAll organic cats []" +
+						"\nAll organic dogs []", response);
 	}
 
 	@Test
@@ -35,7 +37,8 @@ public class VirtualPetShelterTest {
 		testShelter.intake(underTest);
 		String response = testShelter.getMaps();
 		Assert.assertEquals("All pets [kit=Kit RoboCat]" + "\nAll cats [kit=Kit RoboCat]" + "\nAll dogs []"
-				+ "\nAll organic pets []" + "\nAll robotic pets [kit=Kit RoboCat]", response);
+				+ "\nAll organic pets []" + "\nAll robotic pets [kit=Kit RoboCat]" + "\nAll organic cats []" +
+				"\nAll organic dogs []", response);
 	}
 
 	@Test
@@ -46,7 +49,8 @@ public class VirtualPetShelterTest {
 		String response = testShelter.getMaps();
 		Assert.assertEquals(
 				"All pets [snoopy=Snoopy OrganicDog]" + "\nAll cats []" + "\nAll dogs [snoopy=Snoopy OrganicDog]"
-						+ "\nAll organic pets [snoopy=Snoopy OrganicDog]" + "\nAll robotic pets []",
+						+ "\nAll organic pets [snoopy=Snoopy OrganicDog]" + "\nAll robotic pets []" + "\nAll organic cats []" +
+						"\nAll organic dogs [snoopy=Snoopy OrganicDog]",
 				response);
 	}
 
@@ -109,7 +113,7 @@ public class VirtualPetShelterTest {
 		int thirstAfterWater = ((OrganicCat) underTest).getThirst();
 		Assert.assertEquals(10, thirstAfterWater);
 	}
-	
+
 	@Test
 	public void shouldReturnRoboDogWithOil10AfterApplyOil() {
 		VirtualPet underTest = new RoboDog("Fido", 20, 20);
@@ -119,7 +123,7 @@ public class VirtualPetShelterTest {
 		int oilNeedAfterApply = ((RoboDog) underTest).getOilNeed();
 		Assert.assertEquals(10, oilNeedAfterApply);
 	}
-	
+
 	@Test
 	public void shouldReturnRoboDogWithMaintenanceNeed10AfterMaintain() {
 		VirtualPet underTest = new RoboDog("Fido", 20, 20);
@@ -128,6 +132,26 @@ public class VirtualPetShelterTest {
 		testShelter.maintainRoboticPets();
 		int maintenanceNeedAfterApply = ((RoboDog) underTest).getMaintenanceNeed();
 		Assert.assertEquals(10, maintenanceNeedAfterApply);
+	}
+
+	@Test
+	public void shouldReturnOrgDogWithCageWaste0AfterClean() {
+		VirtualPet underTest = new OrganicDog("Snoopy", 20, 20);
+		VirtualPetShelter testShelter = new VirtualPetShelter();
+		testShelter.intake(underTest);
+		testShelter.cleanCages();
+		int cageWasteAfterClean = ((OrganicDog) underTest).getCageWasteLevel();
+		Assert.assertEquals(0, cageWasteAfterClean);
+	}
+
+	@Test
+	public void shouldReturnOrgCatWithLitterBox0AfterClean() {
+		VirtualPet underTest = new OrganicCat("Simba", 20, 20);
+		VirtualPetShelter testShelter = new VirtualPetShelter();
+		testShelter.intake(underTest);
+		testShelter.cleanLitterBoxes();
+		int litterboxAfterClean = ((OrganicCat) underTest).getLitterboxWaste();
+		Assert.assertEquals(0, litterboxAfterClean);
 	}
 
 }

@@ -15,15 +15,20 @@ public class VirtualPetShelter {
 	Map<String, OrganicPet> allOrganicPets = new HashMap<>();
 	// oil/maintain all robotic pets
 	Map<String, RoboticPet> allRoboticPets = new HashMap<>();
+	// clean litterbox
+	Map<String, OrganicCat> organicCats = new HashMap<>();
+	Map<String, OrganicDog> organicDogs = new HashMap<>();
 
 	public void intake(VirtualPet pet) {
 		allPets.put(pet.getName().toLowerCase(), pet);
 		String className = pet.getClass().getSimpleName();
 		if (className.equals("OrganicCat")) {
+			organicCats.put(pet.getName().toLowerCase(), (OrganicCat) pet);
 			allCats.put(pet.getName().toLowerCase(), (Cat) pet);
 			allOrganicPets.put(pet.getName().toLowerCase(), (OrganicCat) pet);
 		}
 		if (className.equals("OrganicDog")) {
+			organicDogs.put(pet.getName().toLowerCase(), (OrganicDog) pet);
 			allDogs.put(pet.getName().toLowerCase(), (Dog) pet);
 			allOrganicPets.put(pet.getName().toLowerCase(), (OrganicDog) pet);
 		}
@@ -44,7 +49,7 @@ public class VirtualPetShelter {
 	public String getMaps() {
 		String message = "All pets " + allPets.entrySet() + "\nAll cats " + allCats.entrySet() + "\nAll dogs "
 				+ allDogs.entrySet() + "\nAll organic pets " + allOrganicPets.entrySet() + "\nAll robotic pets "
-				+ allRoboticPets.entrySet();
+				+ allRoboticPets.entrySet() + "\nAll organic cats " + organicCats.entrySet() + "\nAll organic dogs " + organicDogs.entrySet();
 		return message;
 	}
 
@@ -77,7 +82,17 @@ public class VirtualPetShelter {
 			current.maintain();
 		}
 	}
+
+	public void cleanLitterBoxes() {
+		for (OrganicCat current : organicCats.values()) {
+			current.cleanLitterBox();
+		}
+	}
 	
-	
+	public void cleanCages() {
+		for (OrganicDog current : organicDogs.values()) {
+			current.cleanCage();
+		}
+	}
 
 }

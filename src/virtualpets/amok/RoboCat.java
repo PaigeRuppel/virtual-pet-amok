@@ -2,7 +2,6 @@ package virtualpets.amok;
 
 public class RoboCat extends Cat implements RoboticPet {
 
-	
 	private int oilNeed;
 	private int maintenanceNeed;
 
@@ -29,10 +28,15 @@ public class RoboCat extends Cat implements RoboticPet {
 		}
 		return oilNeed;
 	}
-	
+
 	@Override
 	public void tick() {
 		oilNeed += 5;
 		maintenanceNeed += 5;
+	}
+
+	@Override
+	public String indPetStats() {
+		return getName() + "\t\t | \t " + oilNeed + "\t\t\t | \t " + maintenanceNeed + "\t\t | \t ";
 	}
 }

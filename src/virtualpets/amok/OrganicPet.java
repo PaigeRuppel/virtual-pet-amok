@@ -5,4 +5,5 @@ public interface OrganicPet {
 	public int feed();
 	
 	public int water();
+	
 }

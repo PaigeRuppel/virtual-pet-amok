@@ -53,4 +53,9 @@ public class RoboDog extends Dog implements RoboticPet {
 		return oilNeed;
 	}
 
+	@Override
+	public String indPetStats() {
+		return getName() + "\t\t | \t " + oilNeed + "\t\t\t | \t " + maintenanceNeed + "\t\t | \t ";
+	}
+
 }
