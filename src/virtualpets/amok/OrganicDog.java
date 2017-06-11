@@ -70,6 +70,7 @@ public class OrganicDog extends Dog implements OrganicPet {
 		if (boredom < 0) {
 			boredom = 0;
 		}
+		cageWasteLevel -= 5; // offsets tick (dogs don't mess in their cages for that cycle)
 		setHealth();
 		return boredom;
 	}

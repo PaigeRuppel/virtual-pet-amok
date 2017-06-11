@@ -4,14 +4,14 @@ public class OrganicCat extends Cat implements OrganicPet {
 
 	private int hunger;
 	private int thirst;
-	private int litterboxWaste;
 	private int boredom;
+
+	private int litterboxWaste;
 
 	public OrganicCat(String name, int hunger, int thirst) {
 		super(name);
 		this.hunger = hunger;
 		this.thirst = thirst;
-		litterboxWaste = 0;
 		boredom = 10;
 		setHealth();
 	}
@@ -46,6 +46,8 @@ public class OrganicCat extends Cat implements OrganicPet {
 	public void tick() {
 		hunger += 5;
 		thirst += 5;
+		// consider breaking this out of the tick - make it a factor of how many
+		// organic cats are in the shelter?
 		litterboxWaste += 5;
 		boredom += 5;
 		setHealth();
@@ -55,7 +57,7 @@ public class OrganicCat extends Cat implements OrganicPet {
 		setHealth();
 		return litterboxWaste = 0;
 	}
-	
+
 	@Override
 	public int play() {
 		boredom -= 10;
