@@ -19,6 +19,8 @@
 + Organic Pets
 
    + Organic pets must be fed, watered, and played regularly   
+   
+   + These need are also on a scale of 0 - 100 (0 = content, 100 = needs attention)
 
    + Additionally, the cats' litterbox and dogs' cages must be cleaned or this will negatively impact health   
 
