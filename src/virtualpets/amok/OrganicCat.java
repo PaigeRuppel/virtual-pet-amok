@@ -18,6 +18,9 @@ public class OrganicCat extends Cat implements OrganicPet {
 
 	@Override
 	public int setHealth() {
+		if (hunger + thirst + litterboxWaste + boredom == 0) {
+			health = 100;
+		}
 		health = (100 - (hunger + thirst + litterboxWaste + boredom) / 4);
 		return health;
 	}
@@ -44,13 +47,16 @@ public class OrganicCat extends Cat implements OrganicPet {
 
 	@Override
 	public void tick() {
-		hunger += 5;
-		thirst += 5;
+		hunger += 2;
+		thirst += 2;
 		// consider breaking this out of the tick - make it a factor of how many
 		// organic cats are in the shelter?
-		litterboxWaste += 5;
-		boredom += 5;
+		boredom += 2;
 		setHealth();
+	}
+	
+	public void useLitterBox() {
+		litterboxWaste += 1;
 	}
 
 	public int cleanLitterBox() {

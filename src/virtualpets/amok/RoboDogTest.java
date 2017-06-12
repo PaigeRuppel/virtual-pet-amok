@@ -41,7 +41,7 @@ public class RoboDogTest {
 
 	@Test
 	public void shouldReturnOilLevel20FromTick() {
-		RoboDog underTest = new RoboDog("Bill", 15, 15);
+		RoboDog underTest = new RoboDog("Bill", 18, 18);
 		underTest.tick();
 		int oilNeedAfterTick = underTest.getOilNeed();
 		Assert.assertEquals(20, oilNeedAfterTick);
@@ -49,7 +49,7 @@ public class RoboDogTest {
 	
 	@Test
 	public void shouldReturnMaintenanceLevel20FromTick() {
-		RoboDog underTest = new RoboDog("Bill", 15, 15);
+		RoboDog underTest = new RoboDog("Bill", 18, 18);
 		underTest.tick();
 		int maintenanceNeedAfterTick = underTest.getMaintenanceNeed();
 		Assert.assertEquals(20, maintenanceNeedAfterTick);

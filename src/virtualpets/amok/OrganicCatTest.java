@@ -48,7 +48,7 @@ public class OrganicCatTest {
 	@Test
 	public void shouldReturnHunger20FromTick() {
 		// arrange
-		OrganicCat underTest = new OrganicCat("Simba", 15, 15);
+		OrganicCat underTest = new OrganicCat("Simba", 18, 18);
 		// act
 		underTest.tick();
 		int hungerReturn = underTest.getHunger();
@@ -59,7 +59,7 @@ public class OrganicCatTest {
 	@Test
 	public void shouldReturnThirst20FromTick() {
 		// arrange
-		OrganicCat underTest = new OrganicCat("Simba", 15, 15);
+		OrganicCat underTest = new OrganicCat("Simba", 18, 18);
 		// act
 		underTest.tick();
 		int thirstReturn = underTest.getThirst();

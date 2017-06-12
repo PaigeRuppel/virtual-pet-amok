@@ -27,6 +27,9 @@ public class OrganicDog extends Dog implements OrganicPet {
 
 	@Override
 	public int setHealth() {
+		if (hunger + thirst + cageWasteLevel + boredom == 0) {
+			health = 100;
+		}
 		health = (100 - ((hunger + thirst + cageWasteLevel + boredom) / 4));
 		return health;
 	}
@@ -57,10 +60,10 @@ public class OrganicDog extends Dog implements OrganicPet {
 
 	@Override
 	public void tick() {
-		hunger += 5;
-		thirst += 5;
-		cageWasteLevel += 5;
-		boredom += 5;
+		hunger += 2;
+		thirst += 2;
+		cageWasteLevel += 2;
+		boredom += 2;
 		setHealth();
 	}
 
@@ -70,11 +73,12 @@ public class OrganicDog extends Dog implements OrganicPet {
 		if (boredom < 0) {
 			boredom = 0;
 		}
-		cageWasteLevel -= 5; // offsets tick (dogs don't mess in their cages for that cycle)
+		cageWasteLevel -= 5; // offsets tick (dogs don't mess in their cages for
+								// that cycle)
 		setHealth();
 		return boredom;
 	}
-	
+
 	@Override
 	public int play() {
 		boredom -= 10;

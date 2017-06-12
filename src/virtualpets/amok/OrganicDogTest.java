@@ -74,7 +74,7 @@ public class OrganicDogTest {
 	}
 
 	@Test
-	public void shouldReturnHealthNeed88() {
+	public void shouldReturnHealthNeed85() {
 		OrganicDog underTest = new OrganicDog("Rover", 20, 20, 20, 0);
 		int healthNeed = underTest.getHealth();
 		Assert.assertEquals(85, healthNeed);

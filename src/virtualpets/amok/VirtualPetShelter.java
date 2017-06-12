@@ -116,7 +116,7 @@ public class VirtualPetShelter {
 	public String roboPetsHealthMenu() {
 		String menu = " --------------------------------------------------------------------------\nName" + "\t\t | \t "
 				+ "Oil Need" + "\t\t | \t "
-				+ "Maintenance Need \n --------------------------------------------------------------------------\n\t\t\t\t\t (0 == Perfect Condition)\n --------------------------------------------------------------------------";
+				+ "Maintenance Need \n --------------------------------------------------------------------------\n\t\t Robotic Pets \t (0 == Perfect Condition)\n --------------------------------------------------------------------------";
 		String menuLine = "";
 		for (RoboticPet entry : allRoboticPets.values()) {
 			menuLine = entry.detailedPetStats();
@@ -128,7 +128,7 @@ public class VirtualPetShelter {
 	public String organicPetsHealthMenu() {
 		String menu = " --------------------------------------------------------------------------------------\nName"
 				+ "\t\t | \t " + "Hunger" + "\t\t | \t " + "Thirst" + "\t\t | \t " + "Boredom" + "\t|  " + "Waste Level"
-				+ " \n --------------------------------------------------------------------------------------\n\t\t\t\t\t (0 == Perfect Condition)\n --------------------------------------------------------------------------------------";
+				+ " \n --------------------------------------------------------------------------------------\n\t\t Organic Pets \t (0 == Perfect Condition)\n --------------------------------------------------------------------------------------";
 		String menuLine = "";
 		for (OrganicPet entry : allOrganicPets.values()) {
 			menuLine = entry.detailedPetStats();
@@ -140,6 +140,9 @@ public class VirtualPetShelter {
 	public void tick() {
 		for (VirtualPet current : allPets.values()) {
 			current.tick();
+		}
+		for (OrganicCat current: organicCats.values()) {
+			current.useLitterBox();
 		}
 	}
 }

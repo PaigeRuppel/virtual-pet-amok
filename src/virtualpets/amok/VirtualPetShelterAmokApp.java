@@ -54,9 +54,9 @@ public class VirtualPetShelterAmokApp {
 			writeLine("What would you like to do with the pets?");
 
 			callInitialOptionsMenu();
-			String intialCommand = input.nextLine();
-			// checkForQuit() - need to write this method
-			switch (intialCommand) {
+			String initialCommand = input.nextLine();
+			checkForQuit(initialCommand);
+			switch (initialCommand) {
 			case ("1"):
 				writeLine(myShelter.roboPetsHealthMenu());
 				callCommandMenu();
@@ -71,6 +71,7 @@ public class VirtualPetShelterAmokApp {
 			}
 
 			String secondCommand = input.nextLine();
+			checkForQuit(secondCommand);
 			switch (secondCommand) {
 			case ("1"):
 				myShelter.feedOrganicPets();
@@ -112,7 +113,7 @@ public class VirtualPetShelterAmokApp {
 		writeLine("- In this shelter, you must care for both organic cats and dogs and robotic cats and dogs");
 		writeLine(" - Robotic and Organic pets have different individual needs");
 		writeLine(
-				" - All Pets have a general health status - 100 is perfect health and 0 means that pet will run AMOK!");
+				" - All Pets have a general health status - 100 is perfect health");
 		writeLine(" - The health status is negatively impacted as other needs increase");
 		writeLine("- Caring for the pets is carried out by following the command menus");
 		writeLine("\n\n");
@@ -135,10 +136,17 @@ public class VirtualPetShelterAmokApp {
 		writeLine("2. Water all the organic pets (decreases thirst)");
 		writeLine(
 				"3. Walk all the dogs (decreases boredom for organic dogs, lubricates (decreases oil need) for robotic dogs)");
-		writeLine("4. Clean the organic cats' litterbox (resets cleanliness to 0)");
-		writeLine("5. Clean the organic dogs' cages (resets cleanliness to 0)");
+		writeLine("4. Clean the organic cats' litterbox (resets waste level to 0)");
+		writeLine("5. Clean the organic dogs' cages (resets waste level to 0)");
 		writeLine("6. Play with the organic dogs and give the organic cats catnip (decreases boredom)");
 		writeLine("7. Oil all of the robotic pets (decreases oil need)");
 		writeLine("8. Perform maintenance on all of the robotic pets (decreases maintenance need)");
+	}
+	
+	public static void checkForQuit(String input) {
+		if (input.equalsIgnoreCase("quit")) {
+			writeLine("The shelter will miss you! Goodbye.");
+			System.exit(0);
+		}
 	}
 }

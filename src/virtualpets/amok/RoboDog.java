@@ -14,6 +14,9 @@ public class RoboDog extends Dog implements RoboticPet {
 
 	@Override
 	public int setHealth() {
+		if (oilNeed + maintenanceNeed == 0) {
+			health = 100;
+		}
 		health = (100 - (oilNeed + maintenanceNeed) / 2);
 		return health;
 	}
@@ -43,8 +46,8 @@ public class RoboDog extends Dog implements RoboticPet {
 
 	@Override
 	public void tick() {
-		oilNeed += 5;
-		maintenanceNeed += 5;
+		oilNeed += 2;
+		maintenanceNeed += 2;
 		setHealth();
 	}
 
